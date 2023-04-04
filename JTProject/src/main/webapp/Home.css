@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+:root {
+  --discord-blue: #7289da;
+  --discord-light: #99aab5;
+  --discord-dark: #2c2f33;
+  --discord-text: #fff;
+}
+
+body {
+  background-color: var(--discord-dark);
+  color: var(--discord-text);
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: var(--discord-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: var(--discord-blue);
+  border: none;
+  border-radius: 4px;
+  color: var(--discord-text);
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--discord-light);
+}
+
+.navbar {
+  background-color: var(--discord-blue);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.navbar a {
+  color: var(--discord-text);
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
