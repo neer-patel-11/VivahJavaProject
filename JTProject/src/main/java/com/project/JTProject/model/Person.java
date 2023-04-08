@@ -4,13 +4,15 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToOne;
+
 import org.hibernate.annotations.*;
 
 @Entity
@@ -26,25 +28,40 @@ public class Person {
 	public String gender;
 	public String address;
 	public String contact;
-	public String emailId;
-	public String qualification;
-	public String description;
 	public String motherTongue;
 	public String religion;
 	public String cast;
-	public String choiceDescription;
-	public String occupation;
 	public String motherName;
 	public String fatherName;
 	public LocalDate dob;
+	public String emailId;
 	public String password;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	public PersonProffesionalDetails ppd; 
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	public PersonLogin pl;
 	
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")
 	public String img;
+	
+	public PersonLogin getPl() {
+		return pl;
+	}
+	public void setPl(PersonLogin pl) {
+		this.pl = pl;
+	}
 
 
 
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
 	public String getImg() {
 		return img;
 	}
@@ -62,15 +79,7 @@ public class Person {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public String toString() {
-		return "Person [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName
-				+ ", gender=" + gender + ", address=" + address + ", contact=" + contact + ", emailId=" + emailId
-				+ ", qualification=" + qualification + ", description=" + description + ", motherTongue=" + motherTongue
-				+ ", religion=" + religion + ", cast=" + cast + ", choiceDescription=" + choiceDescription
-				+ ", occupation=" + occupation + ", motherName=" + motherName + ", fatherName=" + fatherName + ", dob="
-				+ dob + ", password=" + password + "]";
-	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -111,37 +120,18 @@ public class Person {
 	}
 
 
+	public PersonProffesionalDetails getPpd() {
+		return ppd;
+	}
+	public void setPpd(PersonProffesionalDetails ppd) {
+		this.ppd = ppd;
+	}
 	public String getContact() {
 		return contact;
 	}
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-
-
-	public String getEmailId() {
-		return emailId;
-	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-
-	public String getQualification() {
-		return qualification;
-	}
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 
 	public String getMotherTongue() {
 		return motherTongue;
@@ -165,23 +155,6 @@ public class Person {
 	public void setCast(String cast) {
 		this.cast = cast;
 	}
-
-
-	public String getChoiceDescription() {
-		return choiceDescription;
-	}
-	public void setChoiceDescription(String choiceDescription) {
-		this.choiceDescription = choiceDescription;
-	}
-
-
-	public String getOccupation() {
-		return occupation;
-	}
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
-	}
-
 
 	public String getMotherName() {
 		return motherName;

@@ -12,7 +12,11 @@
 	<%= session.getAttribute("name") %>
 	
 	<form action="display" method="POST">
-		<button type="submit">Submit</button>
+		<button type="submit">Display</button>
+		
+	</form>
+	<form action="logout" method="POST">
+		<button type="submit">Logout</button>
 		
 	</form>
 	

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.project.JTProject.model.Person;
-
+import com.project.JTProject.model.PersonLogin;
+import com.project.JTProject.model.PersonProffesionalDetails;
 import com.project.JTProject.service.PersonService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,6 +41,8 @@ public class HomeController {
 	{
 		
 			Person p = new Person();
+			PersonProffesionalDetails ppd = new PersonProffesionalDetails();
+			PersonLogin pl = new PersonLogin();
 			
 			p.setFirstName((String) request.getParameter("fname"));
 			p.setMiddleName((String) request.getParameter("mname"));
@@ -48,17 +51,26 @@ public class HomeController {
 			p.setAddress((String) request.getParameter("address"));
 			p.setContact((String) request.getParameter("contact"));
 			p.setEmailId((String) request.getParameter("email"));
-			p.setQualification((String) request.getParameter("qualification"));
-			p.setDescription((String) request.getParameter("description"));
+			ppd.setEmailId((String) request.getParameter("email"));
+			ppd.setQualification((String) request.getParameter("qualification"));
+			ppd.setDescription((String) request.getParameter("description"));
 			p.setMotherTongue((String) request.getParameter("motherTongue"));
 			p.setReligion((String) request.getParameter("religion"));
 			p.setCast((String) request.getParameter("cast"));
-			p.setOccupation((String) request.getParameter("occupation"));
-			p.setChoiceDescription((String) request.getParameter("choiceDescription"));
+			ppd.setOccupation((String) request.getParameter("occupation"));
+			ppd.setChoiceDescription((String) request.getParameter("choiceDescription"));
 			p.setMotherName((String) request.getParameter("mothername"));
 			p.setFatherName((String) request.getParameter("fathername"));
 			p.setDob(LocalDate.parse((String)request.getParameter("dob")));
 			p.setPassword((String) request.getParameter("password"));
+			p.setPpd(ppd);
+			ppd.setPerson(p);
+			
+			pl.setEmailId((String) request.getParameter("email"));
+			pl.setPassword((String) request.getParameter("password"));
+			pl.setP(p);
+			
+			p.setPl(pl);
 			
 			try{
 				p.setImg(Base64.getEncoder().encodeToString(file.getBytes()));
@@ -113,6 +125,18 @@ public class HomeController {
 		
 	}
 		
+	
+	@RequestMapping(value="/logout")
+	public String logout(HttpServletRequest request)
+	{
+		
+		request.getSession().invalidate();
+			
+		return "redirect:/login";
+		
+
+		
+	}
 	
 
 	
