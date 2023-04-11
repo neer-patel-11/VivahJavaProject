@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <!DOCTYPE html>
     <html>
 
     <head>
+        <meta charset="UTF-8">
+        <title>Update Profile</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -91,11 +92,9 @@
             body {
 
 
-                font-size: 14px;
-                font-family: "Helvetica Neue",
-                    Helvetica,
-                    Arial,
-                    sans-serif;
+                font-size: 1.2rem;
+                font-family: Copperplate, Papyrus, fantasy;
+
                 background: var(--bodyColor);
                 color: var(--white);
                 margin-bottom: 2.5rem;
@@ -112,11 +111,17 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
             .form-group {
-                font-size: 1rem;
+                font-size: 1.2rem;
+            }
+
+            .form-group input {
+                font-weight: bold;
             }
 
             .form-group option, select{
                 font-size: 1.2rem;
+                font-weight: bold;
+            
             }
 
             .my-form h1 {
@@ -321,6 +326,10 @@
                 }
             }
 
+            #submit {
+                margin: 2rem;
+            }
+
             #submit:hover {
                 background: #002b51;
                 color: #fff;
@@ -337,29 +346,28 @@
 
     <body>
 
-
-        <form action="register" method="POST" enctype="multipart/form-data" class="my-form">
+        <form action="updateProfile" method="POST" class="my-form">
 
             <div class="container">
+
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" name="fname">
+                    <input type="text" name="fname" value="${person.firstName}">
                 </div>
 
                 <div class="form-group">
                     <label>Middle Name</label>
-                    <input type="text" name="mname">
+                    <input type="text" name="mname" value="${person.middleName}">
                 </div>
 
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" name="lname">
+                    <input type="text" name="lname" value="${person.lastName}">
                 </div>
 
 
                 <div class="form-group">
                     <label for="gender">Gender</label>
-                    
                     <select name="gender">
                         <option value="" selected>Select Gender</option>
                         <option value="Male" >Male</option>
@@ -368,113 +376,70 @@
                 </div>
 
 
-
-
                 <div class="form-group">
                     <label>Address</label>
-                    <input type="text" name="address">
+                    <input type="text" name="address" value="${person.address}">
                 </div>
 
                 <div class="form-group">
                     <label>Contact</label>
-                    <input type="text" name="contact">
+                    <input type="text" name="contact" value="${person.contact}">
                 </div>
 
 
                 <div class="form-group">
                     <label>Email ID</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" value="${person.emailId}">
                 </div>
 
 
-                <div class="form-group">
-                    <label>Qualification</label>
-                    <input type="text" name="qualification">
-                </div>
-
-                <div class="form-group">
-                    <label>Description</label>
-                    <input type="text" name="description">
-                </div>
 
 
                 <div class="form-group">
                     <label>Mother-Tongue</label>
-                    <input type="text" name="motherTongue">
+                    <input type="text" name="motherTongue" value="${person.motherTongue}">
                 </div>
 
                 <div class="form-group">
                     <label>Religion</label>
-                    <input type="text" name="religion">
+                    <input type="text" name="religion" value="${person.religion}">
                 </div>
 
                 <div class="form-group">
                     <label>Cast</label>
-                    <input type="text" name="cast">
+                    <input type="text" name="cast" value="${person.cast}">
                 </div>
-
-                <div class="form-group">
-                    <label>Choice Description</label>
-                    <input type="text" name="choiceDescription">
-                </div>
-
-
-                <div class="form-group">
-                    <label>Occupation</label>
-                    <input type="text" name="occupation">
-                </div>
-
 
 
                 <div class="form-group">
                     <label>Mother Name</label>
-                    <input type="text" name="mothername">
+                    <input type="text" name="mothername" value="${person.motherName}">
                 </div>
 
 
 
                 <div class="form-group">
                     <label>Father Name</label>
-                    <input type="text" name="fathername">
+                    <input type="text" name="fathername" value="${person.fatherName}">
                 </div>
 
                 <div class="form-group">
                     <label>Date Of Birth</label>
-                    <input type="date" name="dob">
+                    <input type="date" name="dob" value="${person.dob}">
                 </div>
 
 
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password">
+                    <input type="password" name="password" value="${person.password}">
                 </div>
 
-                <div class="form-group">
-                    <label>Profile Photo</label>
-                    <input type="file" name="img">
-                </div>
-                <br>
-                <br>
-                <button type="submit" name="submit">Submit</button>
+                <button type="submit">Submit</button>
 
             </div>
         </form>
 
 
-        <div style="text-align: center; font-size: 1.1rem; color: white;">If you already have an account, <a href="login">login</a> instead.
-        </div>
-
-        <script>
-
-            const checkbox = document.querySelector('.my-form input[type="checkbox"]');
-            const btns = document.querySelectorAll(".my-form button");
-
-            checkbox.addEventListener("change", function () {
-                const checked = this.checked;
-                for (const btn of btns) {
-                    checked ? (btn.disabled = false) : (btn.disabled = true);
-                }
-            });
-
-        </script>
     </body>
+
+    </html>

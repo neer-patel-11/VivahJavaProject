@@ -27,6 +27,14 @@ public class PersonProffesionalDetails {
 	public Person person;
 	
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getEmailId() {
 		return emailId;
 	}
